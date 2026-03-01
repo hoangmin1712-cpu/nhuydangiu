@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Công Chúa Của Anh ❤️</title>
+    <style>
+        :root { --accent: #ff4d6d; --bg: #fff0f3; }
+        body { margin: 0; background: linear-gradient(135deg, #ffafbd, #ffc3a0); font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
+        .container { background: white; width: 100%; max-width: 500px; padding: 30px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); position: relative; }
+        h1 { color: var(--accent); text-align: center; font-size: 22px; margin-bottom: 25px; }
+        .step { display: none; animation: fadeIn 0.5s ease; }
+        .step.active { display: block; }
+        label { display: block; font-weight: 600; color: #444; margin-bottom: 8px; font-size: 15px; }
+        input, select, textarea { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 12px; margin-bottom: 20px; outline: none; box-sizing: border-box; transition: 0.3s; }
+        input:focus { border-color: var(--accent); }
+        .btn-group { display: flex; gap: 10px; margin-top: 10px; }
+        button { flex: 1; background: var(--accent); color: white; border: none; padding: 14px; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { transform: translateY(-2px); opacity: 0.9; }
+        button.back { background: #f0f0f0; color: #666; }
+        .progress { text-align: center; font-size: 12px; color: #aaa; margin-top: 20px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form id="loveForm">
+        <div class="step active" id="s1">
+            <h1>Kỉ Niệm Đầu Tiên ❤️</h1>
+            <label>1. Lần đầu tiên gặp anh, em ấn tượng điều gì nhất?</label>
+            <input type="text" name="cau_1" placeholder="Nhớ lại xem nàoo..." required>
+            <label>2. Địa điểm hẹn hò nào em muốn chúng mình đi lại nhất?</label>
+            <input type="text" name="cau_2" placeholder="Nơi đó có kỉ niệm gì nhỉ?">
+            <button type="button" onclick="next(2)">Tiếp tục ✨</button>
+        </div>
+
+        <div class="step" id="s2">
+            <h1>Thấu Hiểu Nhau ✨</h1>
+            <label>3. Hành động nhỏ nào của anh khiến em thấy được yêu?</label>
+            <textarea name="cau_3" rows="2" placeholder="Ví dụ: Nắm tay, gạt chỗ để chân..."></textarea>
+            <label>4. Nếu được đổi một thói quen xấu của anh, em chọn gì?</label>
+            <input type="text" name="cau_4" placeholder="Cứ nói thật lòng nhé em">
+            <div class="btn-group">
+                <button type="button" class="back" onclick="next(1)">Quay lại</button>
+                <button type="button" onclick="next(3)">Tiếp tục ✨</button>
+            </div>
+        </div>
+
+        <div class="step" id="s3">
+            <h1>Sở Thích Chung 🍦</h1>
+            <label>5. Trước giờ gặp bao nhiêu chuyện rồi em còn giấu a gì không?</label>
+            <input type="text" name="cau_5" placeholder="Anh sẽ cố gắng học nấu!">
+            <label>6. Em thích chúng mình ôm nhau hay hôn nhau hơn?</label>
+            <select name="cau_6">
+                <option value="Om">Cái ôm ấm áp</option>
+                <option value="Hon">Nụ hôn ngọt ngào</option>
+                <option value="Ca hai">Cả hai luôn đi!</option>
+            </select>
+            <div class="btn-group">
+                <button type="button" class="back" onclick="next(2)">Quay lại</button>
+                <button type="button" onclick="next(4)">Tiếp tục ✨</button>
+            </div>
+        </div>
+
+        <div class="step" id="s4">
+            <h1>Tương Lai ✈️</h1>
+            <label>7. Chuyến du lịch trong mơ của em với anh là ở đâu?</label>
+            <input type="text" name="cau_7" placeholder="Đà Lạt, Phú Quốc hay nước ngoài?">
+            <label>8. Em muốn chúng mình có mấy đứa con nè?</label>
+            <input type="text" name="cau_8" placeholder="Số mấy thì em vui?">
+            <div class="btn-group">
+                <button type="button" class="back" onclick="next(3)">Quay lại</button>
+                <button type="button" onclick="next(5)">Tiếp tục ✨</button>
+            </div>
+        </div>
+
+        <div class="step" id="s5">
+            <h1>Lời Từ Trái Tim 💖</h1>
+            <label>9. Em có tin vào 'định mệnh' khi gặp anh không?</label>
+            <select name="cau_9">
+                <option value="Co">Chắc chắn rồi</option>
+                <option value="Khong">Em tin vào sự nỗ lực của hai đứa</option>
+            </select>
+            <label>10. Viết một lời nhắn nhủ ngọt ngào nhất cho anh nhé?</label>
+            <textarea name="cau_10" rows="3" placeholder="Yêu anh nhiều lắm..."></textarea>
+            <div class="btn-group">
+                <button type="button" class="back" onclick="next(4)">Quay lại</button>
+                <button type="submit" id="btnGui">Gửi Cho Anh ❤️</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="done" style="display:none; text-align:center;">
+        <h1 style="font-size:60px;">💌</h1>
+        <h1>Đã gửi tới anh!</h1>
+        <p>Cảm ơn bé đã trả lời. Anh sẽ đọc từng chữ một và yêu em nhiều hơn mỗi ngày. Moahhh! 💋</p>
+    </div>
+
+    <div class="progress" id="pg">Trang <span id="cur">1</span>/5</div>
+</div>
+
+<script>
+    // DÁN ID FORMSPREE CỦA BẠN VÀO ĐÂY
+    const FORM_ID = "xbdaeyge"; 
+
+    function next(num) {
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById('s' + num).classList.add('active');
+        document.getElementById('cur').innerText = num;
+    }
+
+    document.getElementById('loveForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('btnGui');
+        btn.innerText = "Đang gửi...";
+        btn.disabled = true;
+
+        const data = new FormData(this);
+        const obj = Object.fromEntries(data.entries());
+
+        fetch(`https://formspree.io/f/${FORM_ID}`, {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+        }).then(() => {
+            document.getElementById('loveForm').style.display = 'none';
+            document.getElementById('pg').style.display = 'none';
+            document.getElementById('done').style.display = 'block';
+        });
+    });
+</script>
+</body>
+</html>
